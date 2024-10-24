@@ -1,9 +1,11 @@
 ---
-name: 02 Azure Landing Zones CD
+name: 02-Platform-Connectivity CD
 on:
   push:
     branches:
       - main
+    paths:
+      - "connectivity/**"
   workflow_dispatch:
     inputs:
       terraform_action:
