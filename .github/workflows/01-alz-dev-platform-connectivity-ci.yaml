@@ -1,10 +1,13 @@
 ---
-name: 01 Azure Landing Zones CI
+name: 01-ALZ-Dev-Platform-Connectivity CI
 on:
   pull_request:
     branches:
       - main
+    paths:
+      - 'connectivity/**'
   workflow_dispatch:
+  
 
 jobs:
   validate_and_plan:
