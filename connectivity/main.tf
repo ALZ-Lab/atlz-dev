@@ -8,9 +8,9 @@ terraform {
       version = "~> 3.107"
     }
   }
-#  backend "local" {
-#    path = "./connectivity.tfstate"
-#  }
+  #  backend "local" {
+  #    path = "./connectivity.tfstate"
+  #  }
   backend "azurerm" {
     resource_group_name  = "rg-dev-tfstate"
     storage_account_name = "stadevtfstate"
@@ -59,7 +59,7 @@ module "alz" {
 
   # Configuration settings for connectivity resources
   deploy_connectivity_resources    = true
-  configure_connectivity_resources = local.configure_connectivity_resources
-  subscription_id_connectivity     = var.subscription_id_connectivity
+  configure_connectivity_resources = data.terraform_remote_state.connectivity.outputs.configuration
+  subscription_id_connectivity     = data.terraform_remote_state.connectivity.outputs.subscription_id
 
 }
