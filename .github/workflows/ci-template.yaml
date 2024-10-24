@@ -31,7 +31,7 @@ jobs:
     needs: validate
     runs-on: ubuntu-latest
     concurrency: dev-tfstate
-    environment: atlz-dev-plan
+    environment: alz-dev-plan
     permissions:
       # NOTE: When modifying the token subject claims and adding `environment`.
       # If the `id-token` permission is granted at the workflow level

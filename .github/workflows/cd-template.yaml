@@ -13,7 +13,7 @@ jobs:
     name: Plan with Terraform
     runs-on: ubuntu-latest
     concurrency: dev-tfstate
-    environment: atlz-dev-plan
+    environment: alz-dev-plan
     permissions:
       id-token: write
       contents: read
@@ -93,11 +93,12 @@ jobs:
 
       - name: Terraform Init
         run: |
-          terraform init \
-          -backend-config="resource_group_name=${{vars.BACKEND_AZURE_RESOURCE_GROUP_NAME}}" \
-          -backend-config="storage_account_name=${{vars.BACKEND_AZURE_STORAGE_ACCOUNT_NAME}}" \
-          -backend-config="container_name=${{vars.BACKEND_AZURE_STORAGE_ACCOUNT_CONTAINER_NAME}}" \
-          -backend-config="key=terraform.tfstate"
+          terraform init
+        #  terraform init \
+        #  -backend-config="resource_group_name=${{vars.BACKEND_AZURE_RESOURCE_GROUP_NAME}}" \
+        #  -backend-config="storage_account_name=${{vars.BACKEND_AZURE_STORAGE_ACCOUNT_NAME}}" \
+        #  -backend-config="container_name=${{vars.BACKEND_AZURE_STORAGE_ACCOUNT_CONTAINER_NAME}}" \
+        #  -backend-config="key=terraform.tfstate"
 
       - name: Terraform ${{ inputs.terraform_action == 'destroy' && 'Destroy' || 'Apply' }}
         run: terraform apply -input=false -auto-approve tfplan
