@@ -1,18 +1,17 @@
 ---
-name: 01-ALZ-Dev-Platform-Connectivity CI
+name: 01-Platform-Connectivity CI
 on:
   pull_request:
     branches:
       - main
     paths:
-      - 'connectivity/**'
+      - "connectivity/**"
   workflow_dispatch:
-  
 
 jobs:
   validate_and_plan:
     uses: ALZ-Lab/atlz-dev/.github/workflows/ci-template.yaml@main
-    name: 'CI'
+    name: "CI"
     permissions:
       id-token: write
       contents: read
