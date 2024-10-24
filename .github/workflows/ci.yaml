@@ -1,0 +1,16 @@
+---
+name: 01 Azure Landing Zones CI
+on:
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  validate_and_plan:
+    uses: ALZ-Lab/atlz-dev/.github/workflows/ci-template.yaml@main
+    name: 'CI'
+    permissions:
+      id-token: write
+      contents: read
+      pull-requests: write
