@@ -21,8 +21,7 @@ jobs:
         run: terraform fmt -check
 
       - name: Terraform Init
-        run: terraform init
-        #run: terraform init -backend=false
+        run: terraform init -backend=false
 
       - name: Terraform Validate
         run: terraform validate
@@ -45,7 +44,11 @@ jobs:
       ARM_CLIENT_ID: "${{ vars.AZURE_CLIENT_ID }}"
       ARM_SUBSCRIPTION_ID: "${{ vars.AZURE_SUBSCRIPTION_ID }}"
       ARM_TENANT_ID: "${{ vars.AZURE_TENANT_ID }}"
-      ARM_USE_AZUREAD: true
+      ARM_BE_RG_ID: "${{ vars.BACKEND_AZURE_RESOURCE_GROUP_NAME }}"
+      ARM_BE_CONTAINER_ID: "${{ vars.BACKEND_AZURE_STORAGE_ACCOUNT_CONTAINER_NAME }}"
+      ARM_BE_STA_ID: "${{ vars.BACKEND_AZURE_STORAGE_ACCOUNT_NAME }}"
+      ARM_BE_STA_KEY: "${{ vars.BACKEND_AZURE_STORAGE_ACCOUNT_KEY }}"
+      #ARM_USE_AZUREAD: true
       ARM_USE_OIDC: true
     steps:
       - name: Checkout Code
@@ -62,11 +65,11 @@ jobs:
           -backend-config="resource_group_name=${{vars.BACKEND_AZURE_RESOURCE_GROUP_NAME}}" \
           -backend-config="storage_account_name=${{vars.BACKEND_AZURE_STORAGE_ACCOUNT_NAME}}" \
           -backend-config="container_name=${{vars.BACKEND_AZURE_STORAGE_ACCOUNT_CONTAINER_NAME}}"
-          -backend-config="key=connectivity.tfstate"
+          -backend-config="key=${{vars.BACKEND_AZURE_STORAGE_ACCOUNT_KEY}}"
 
       - name: Terraform Plan
         id: plan
-        run: terraform -chdir=connectivity plan
+        run: terraform plan
         #run: terraform plan -input=false
 
       - name: Update Pull Request
