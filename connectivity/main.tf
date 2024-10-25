@@ -16,6 +16,10 @@ terraform {
     storage_account_name = "stadevtfstate"
     container_name       = "atlz-dev-connectivity"
     key                  = "connectivity.tfstate"
+    use_oidc             = true                                   # Can also be set via `ARM_USE_OIDC` environment variable.
+    client_id            = "250f1f11-bb48-49ac-8a91-c6f116098e33" # Can also be set via `ARM_CLIENT_ID` environment variable.
+    subscription_id      = "6e06f118-5146-4357-a5cc-7329340def38" # Can also be set via `ARM_SUBSCRIPTION_ID` environment variable.
+    tenant_id            = "20ead862-19d8-4495-94e5-366875e455a7" # Can also be set via `ARM_TENANT_ID` environment variable.
   }
 }
 
