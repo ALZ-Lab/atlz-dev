@@ -21,7 +21,7 @@ variable "secondary_location" {
 variable "subscription_id_connectivity" {
   type        = string
   description = "Subscription ID to use for \"connectivity\" resources."
-  #default     = "6e06f118-5146-4357-a5cc-7329340def38"
+  default     = "6e06f118-5146-4357-a5cc-7329340def38"
 }
 
 variable "enable_ddos_protection" {
