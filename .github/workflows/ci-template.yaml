@@ -48,7 +48,6 @@ jobs:
       ARM_ACCESS_KEY: ${{ secrets.AZURE_STORAGE_ACCESS_KEY }}
     #  ARM_USE_AZUREAD: true
     #  ARM_USE_OIDC: true
-
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -61,15 +60,10 @@ jobs:
       - name: Terraform Init
         run: |
           terraform init
-        #  terraform init \
-        #  -backend-config="resource_group_name="rg-dev-tfstate"" \
-        #  -backend-config="storage_account_name="stadevtfstate"" \
-        #  -backend-config="container_name="atlz-dev-connectivity"" \
-        #  -backend-config="key=connectivity.tfstate"
-
       - name: Terraform Plan
         id: plan
-        run: terraform plan -input=false
+        run: terraform plan
+        #run: terraform plan -input=false
 
       - name: Update Pull Request
         if: (success() || failure()) && github.event_name == 'pull_request'
