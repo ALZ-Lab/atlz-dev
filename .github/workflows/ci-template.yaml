@@ -62,9 +62,6 @@ jobs:
         with:
           terraform_wrapper: false
 
-      - name: Debug Output
-        run: cd connectivity && pwd
-
       - name: Terraform Init
         run: terraform init
 
