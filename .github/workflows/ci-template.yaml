@@ -8,7 +8,6 @@ jobs:
     name: Validate Terraform
     runs-on: ubuntu-latest
     environment: atlz-dev-plan
-    defaults:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
