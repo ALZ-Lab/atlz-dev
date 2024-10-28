@@ -9,19 +9,19 @@ variable "root_id" {
 variable "primary_location" {
   type        = string
   description = "Sets the location for \"primary\" resources to be created in."
-  default     = "northeurope"
+  default     = "westeurope"
 }
 
 variable "secondary_location" {
   type        = string
   description = "Sets the location for \"secondary\" resources to be created in."
-  default     = "westeurope"
+  default     = "northeurope"
 }
 
 variable "subscription_id_connectivity" {
   type        = string
   description = "Subscription ID to use for \"connectivity\" resources."
-  default     = "6e06f118-5146-4357-a5cc-7329340def38"
+  #default     = "6e06f118-5146-4357-a5cc-7329340def38"
 }
 
 variable "enable_ddos_protection" {

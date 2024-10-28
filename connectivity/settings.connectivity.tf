@@ -29,7 +29,9 @@ locals {
         enabled = var.enable_ddos_protection
       }
       # DNS will be deployed with default settings
-      #dns = {}
+      dns = {
+        enabled = false
+      }
     }
     # Set the default location
     location = var.primary_location
