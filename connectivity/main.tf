@@ -16,8 +16,8 @@ terraform {
   backend "azurerm" {
     resource_group_name  = "rg-dev-tfstate"
     storage_account_name = "stadevtfstate"
-    container_name      = "atlz-dev-connectivity"
-    key                 = "connectivity.tfstate"
+    container_name       = "atlz-dev-connectivity"
+    key                  = "connectivity.tfstate"
     # access_key is provided via environment variable ARM_ACCESS_KEY
   }
 }
@@ -72,6 +72,6 @@ module "alz" {
   # Configuration settings for connectivity resources
   deploy_connectivity_resources    = true
   configure_connectivity_resources = local.configure_connectivity_resources
-  subscription_id_connectivity     = var.subscription_id_connectivity
+  #subscription_id_connectivity     = var.subscription_id_connectivity
 
 }
