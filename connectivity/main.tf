@@ -13,8 +13,13 @@ terraform {
   #  backend "local" {
   #    path = "./connectivity.tfstate"
   #  }
-
-
+  backend "azurerm" {
+    resource_group_name  = "rg-dev-tfstate"
+    storage_account_name = "stadevtfstate"
+    container_name      = "atlz-dev-connectivity"
+    key                 = "connectivity.tfstate"
+    # access_key is provided via environment variable ARM_ACCESS_KEY
+  }
 }
 
 # Define the provider configuration
@@ -23,11 +28,12 @@ provider "azurerm" {
   features {}
 
   # subscription_id = var.subscription_id_connectivity
-  subscription_id = "6e06f118-5146-4357-a5cc-7329340def38"
-  client_id       = "d46471f3-633c-4469-9e48-0756785b8405"
-  client_secret   = "Nhb8Q~Uf3GfNmB71pw1ElvDYAM4DPwndk-g7LbcL" # Add client secret
-  #use_oidc        = true
-  tenant_id = "20ead862-19d8-4495-94e5-366875e455a7"
+
+  # These values will be provided via GitHub Actions environment variables
+  # subscription_id = var.subscription_id
+  # client_id       = var.client_id
+  # client_secret   = var.client_secret
+  # tenant_id       = var.tenant_id
 
 }
 
@@ -68,19 +74,4 @@ module "alz" {
   configure_connectivity_resources = local.configure_connectivity_resources
   subscription_id_connectivity     = var.subscription_id_connectivity
 
-}
-
-terraform {
-  backend "azurerm" {
-    resource_group_name  = "rg-dev-tfstate"
-    storage_account_name = "stadevtfstate"
-    container_name       = "atlz-dev-connectivity"
-    key                  = "connectivity.tfstate"
-    access_key           = "EnIZehd/NX1nYgYMTtlkcQiEH+u1XEjFT0GvDCaejz1TaRyQitFJLKrqPTx9WmJur4BPD0r6eBAD+AStlDDLAw=="
-    #  use_oidc             = true                                   # Can also be set via `ARM_USE_OIDC` environment variable.
-    #  client_id            = "d46471f3-633c-4469-9e48-0756785b8405" # Can also be set via `ARM_CLIENT_ID` environment variable.
-    #  client_secret        = "Nhb8Q~Uf3GfNmB71pw1ElvDYAM4DPwndk-g7LbcL"
-    #  subscription_id      = "6e06f118-5146-4357-a5cc-7329340def38" # Can also be set via `ARM_SUBSCRIPTION_ID` environment variable.
-    #  tenant_id            = "20ead862-19d8-4495-94e5-366875e455a7" # Can also be set via `ARM_TENANT_ID` environment variable.
-  }
 }
