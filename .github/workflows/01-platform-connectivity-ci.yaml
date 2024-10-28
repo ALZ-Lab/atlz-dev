@@ -6,7 +6,7 @@ on:
       - main
     paths:
       - "connectivity/**"
-      - ".github/workflows/ci-template.yaml"
+      - ".github/workflows/**"
   workflow_dispatch:
 
 jobs:
