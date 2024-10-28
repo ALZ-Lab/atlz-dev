@@ -9,13 +9,13 @@ variable "root_id" {
 variable "primary_location" {
   type        = string
   description = "Sets the location for \"primary\" resources to be created in."
-  default     = "northeurope"
+  default     = "westeurope"
 }
 
 variable "secondary_location" {
   type        = string
   description = "Sets the location for \"secondary\" resources to be created in."
-  default     = "westeurope"
+  default     = "northeurope"
 }
 
 variable "subscription_id_connectivity" {
