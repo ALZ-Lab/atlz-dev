@@ -59,6 +59,10 @@ jobs:
 
       - name: Terraform Init
         run: terraform init
+
+      - name: Debug Output
+        run: pwd && env
+
       - name: Terraform Plan
         id: plan
         run: terraform plan -input=false
