@@ -9,9 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     environment: atlz-dev-plan
     defaults:
-      run:
-        shell: bash
-        working-directory: ${{ env.WORKING_DIR }}
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
