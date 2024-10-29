@@ -85,8 +85,7 @@ jobs:
 
       - name: Terraform Init
         run: |
-          echo $ARM_CLIENT_ID \
-          TF_LOG=DEBUG terraform init
+          "echo $ARM_CLIENT_ID" && "TF_LOG=DEBUG terraform init"
 
       - name: Terraform Plan
         id: plan
