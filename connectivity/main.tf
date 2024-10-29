@@ -34,7 +34,8 @@ provider "azurerm" {
   # client_id       = var.client_id
   # client_secret   = var.client_secret
   # tenant_id       = var.tenant_id
-
+  client_id     = var.client_id
+  client_secret = var.client_secret
 }
 
 # Get the current client configuration from the AzureRM provider
@@ -72,6 +73,8 @@ module "alz" {
   # Configuration settings for connectivity resources
   deploy_connectivity_resources    = true
   configure_connectivity_resources = local.configure_connectivity_resources
-  subscription_id_connectivity     = var.subscription_id_connectivity
+  #subscription_id_connectivity     = var.subscription_id_connectivity
 
 }
+variable "client_id" {}
+variable "client_secret" {}
