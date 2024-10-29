@@ -31,9 +31,9 @@ provider "azurerm" {
 
   # These values will be provided via GitHub Actions environment variables
   # subscription_id = var.subscription_id
-  # client_id       = var.client_id
-  # client_secret   = var.client_secret
-  # tenant_id       = var.tenant_id
+  client_id     = var.client_id
+  client_secret = var.client_secret
+  # tenant_id     = var.tenant_id
 }
 
 # Get the current client configuration from the AzureRM provider
@@ -74,5 +74,5 @@ module "alz" {
   #subscription_id_connectivity     = var.subscription_id_connectivity
 
 }
-#variable "client_id" {} #Just for testing, should be removed in PRODUCT
-#variable "client_secret" {}
+variable "client_id" {} #Just for testing, should be removed in Release
+variable "client_secret" {}
