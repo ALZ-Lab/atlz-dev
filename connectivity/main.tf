@@ -74,5 +74,5 @@ module "alz" {
   #subscription_id_connectivity     = var.subscription_id_connectivity
 
 }
-variable "client_id" {}
-variable "client_secret" {}
+#variable "client_id" {} #Just for testing, should be removed in PRODUCT
+#variable "client_secret" {}
