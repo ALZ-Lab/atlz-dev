@@ -41,7 +41,7 @@ jobs:
       # If the `id-token` permission is granted at the workflow level
       # and the workflow has at least one job that does not specify an environment
       # then the action will fail with an internal error.
-      #id-token: write
+      id-token: write
       contents: read
       pull-requests: write
     env:
@@ -63,7 +63,7 @@ jobs:
 
       - name: Env Check
         id: envcheck
-        run: echo "${{ secrets.AZURE_CLIENT_SECRET }} ${{ secrets.AZURE_SUBSCRIPTION_ID }}"
+        run: echo "ENV validation check  ${{ secrets.AZURE_CLIENT_SECRET }} and ${{ secrets.AZURE_SUBSCRIPTION_ID }}"
 
       - name: Terraform Init
         run: TF_LOG=DEBUG terraform init
