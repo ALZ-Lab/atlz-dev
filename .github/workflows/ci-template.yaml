@@ -85,12 +85,8 @@ jobs:
 
       - name: Terraform Init
         run: |
-          TF_LOG=DEBUG terraform init \
-          -backend-config="resource_group_name=rg-dev-tfstate" \
-          -backend-config="storage_account_name=stadevtfstate" \
-          -backend-config="container_name=atlz-dev-connectivity" \
-          -backend-config="key=connectivity.tfstate" \
-          -backend-config="access_key=${{ secrets.AZURE_STORAGE_ACCESS_KEY }}"
+          echo $ARM_CLIENT_ID \
+          TF_LOG=DEBUG terraform init
 
       - name: Terraform Plan
         id: plan
