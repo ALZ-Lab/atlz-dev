@@ -2,6 +2,27 @@
 name: CI
 on:
   workflow_call:
+    inputs:
+      WORKING_DIR:
+        required: true
+        type: string
+      environment:
+        required: true
+        type: string
+      subscription_id:
+        required: true
+        type: string
+    secrets:
+      ARM_CLIENT_ID:
+        required: true
+      ARM_CLIENT_SECRET:
+        required: true
+      ARM_TENANT_ID:
+        required: true
+      ARM_SUBSCRIPTION_ID:
+        required: true
+      ARM_ACCESS_KEY:
+        required: true
 
 jobs:
   validate:
@@ -44,13 +65,13 @@ jobs:
       id-token: write
       contents: read
       pull-requests: write
-    env:
-      WORKING_DIR: ./connectivity
-      ARM_CLIENT_ID: "${{ secrets.AZURE_CLIENT_ID }}"
-      ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
-      ARM_SUBSCRIPTION_ID: "${{ secrets.AZURE_SUBSCRIPTION_ID }}"
-      ARM_TENANT_ID: "${{ secrets.AZURE_TENANT_ID }}"
-      ARM_ACCESS_KEY: ${{ secrets.AZURE_STORAGE_ACCESS_KEY }}
+    #env:
+    #  WORKING_DIR: ./connectivity
+    #  ARM_CLIENT_ID: "${{ secrets.AZURE_CLIENT_ID }}"
+    #  ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+    #  ARM_SUBSCRIPTION_ID: "${{ secrets.AZURE_SUBSCRIPTION_ID }}"
+    #  ARM_TENANT_ID: "${{ secrets.AZURE_TENANT_ID }}"
+    #  ARM_ACCESS_KEY: ${{ secrets.AZURE_STORAGE_ACCESS_KEY }}
     #  ARM_USE_AZUREAD: true
     #  ARM_USE_OIDC: true
     steps:
