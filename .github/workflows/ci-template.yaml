@@ -84,11 +84,11 @@ jobs:
           terraform_wrapper: false
 
       - name: Terraform Init
-        run: terraform init
+        run: TF_LOG=DEBUG terraform init
 
       - name: Terraform Plan
         id: plan
-        run: terraform plan
+        run: TF_LOG=DEBUG terraform plan
 
       - name: Update Pull Request
         if: (success() || failure()) && github.event_name == 'pull_request'
