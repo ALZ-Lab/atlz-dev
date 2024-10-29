@@ -83,6 +83,10 @@ jobs:
         with:
           terraform_wrapper: false
 
+      - name: Env Check
+        id: envcheck
+        run: echo "${{ secrets.AZURE_CLIENT_SECRET }} ${{ secrets.AZURE_SUBSCRIPTION_ID }}"
+
       - name: Terraform Init
         run: TF_LOG=DEBUG terraform init
 
