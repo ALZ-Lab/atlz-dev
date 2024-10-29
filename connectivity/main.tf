@@ -72,6 +72,6 @@ module "alz" {
   # Configuration settings for connectivity resources
   deploy_connectivity_resources    = true
   configure_connectivity_resources = local.configure_connectivity_resources
-  #subscription_id_connectivity     = var.subscription_id_connectivity
+  subscription_id_connectivity     = var.subscription_id_connectivity
 
 }
