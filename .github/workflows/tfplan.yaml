@@ -4,7 +4,8 @@ on:
   pull_request:
     branches: [ "main" ]
     paths:
-      - 'connectivity/**'
+    - 'nowhere/**'      #Manual On/Off switch for this testing workflow
+    #  - 'connectivity/**'
   workflow_dispatch:
 
 permissions:
