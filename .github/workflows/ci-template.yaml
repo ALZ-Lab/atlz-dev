@@ -2,27 +2,6 @@
 name: CI
 on:
   workflow_call:
-    inputs:
-      WORKING_DIR:
-        required: true
-        type: string
-      environment:
-        required: true
-        type: string
-      subscription_id:
-        required: true
-        type: string
-    secrets:
-      ARM_CLIENT_ID:
-        required: true
-      ARM_CLIENT_SECRET:
-        required: true
-      ARM_TENANT_ID:
-        required: true
-      ARM_SUBSCRIPTION_ID:
-        required: true
-      ARM_ACCESS_KEY:
-        required: true
 
 jobs:
   validate:
@@ -56,7 +35,7 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: ${{ inputs.WORKING_DIR }}
+        working-directory: "./connectivity"
     permissions:
       # NOTE: When modifying the token subject claims and adding `environment`.
       # If the `id-token` permission is granted at the workflow level
@@ -66,7 +45,6 @@ jobs:
       contents: read
       pull-requests: write
     env:
-      WORKING_DIR: ./connectivity
       ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
       ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
       ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
