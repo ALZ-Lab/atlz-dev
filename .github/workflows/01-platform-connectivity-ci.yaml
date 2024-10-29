@@ -16,8 +16,8 @@ jobs:
       id-token: write
       contents: read
       pull-requests: write
-    with:
-      WORKING_DIR: "./connectivity"
+#    with:
+#      WORKING_DIR: "./connectivity"
 #      environment: "atlz-dev-plan"
 #      subscription_id: ${{ vars.CONNECTIVITY_SUBSCRIPTION_ID }}
 #    secrets:
