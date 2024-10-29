@@ -56,7 +56,7 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: ${{ env.WORKING_DIR }}
+        working-directory: ${{ inputs.WORKING_DIR }}
     permissions:
       # NOTE: When modifying the token subject claims and adding `environment`.
       # If the `id-token` permission is granted at the workflow level
