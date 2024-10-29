@@ -15,7 +15,7 @@ jobs:
   terraform-test:
     name: 'Terraform Test'
     runs-on: ubuntu-latest
-    environment: development
+    environment: atlz-dev-plan
 
     defaults:
       run:
