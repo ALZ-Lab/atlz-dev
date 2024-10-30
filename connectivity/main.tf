@@ -26,18 +26,10 @@ terraform {
 
 provider "azurerm" {
   features {}
-
   # subscription_id = var.subscription_id_connectivity
-
-  # These values will be provided via GitHub Actions environment variables
-  # subscription_id = var.subscription_id
-  client_id     = var.client_id
-  client_secret = var.client_secret
-  # tenant_id     = var.tenant_id
 }
 
 # Get the current client configuration from the AzureRM provider
-
 #data "azurerm_client_config" "current" {}
 
 # Declare the Azure landing zones Terraform module
@@ -74,5 +66,3 @@ module "alz" {
   #subscription_id_connectivity     = var.subscription_id_connectivity
 
 }
-variable "client_id" {} #Just for testing, should be removed in Release
-variable "client_secret" {}
