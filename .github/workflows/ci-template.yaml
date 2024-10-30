@@ -31,11 +31,11 @@ jobs:
     needs: validate
     runs-on: ubuntu-latest
     #concurrency: dev-tfstate
-    environment: atlz-dev-plan
     defaults:
       run:
         shell: bash
         working-directory: './connectivity'
+    environment: atlz-dev-plan
     permissions:
       # NOTE: When modifying the token subject claims and adding `environment`.
       # If the `id-token` permission is granted at the workflow level
@@ -63,7 +63,7 @@ jobs:
 
       - name: Env Check
         id: envcheck
-        run: echo "ENV validation check  ${{ secrets.AZURE_CLIENT_SECRET }} and ${{ secrets.AZURE_SUBSCRIPTION_ID }}"
+        run: echo "ENV validation check, 1.SECRET - ${{ secrets.AZURE_CLIENT_SECRET }} 2.SUBSCRIPTION ${{ secrets.AZURE_SUBSCRIPTION_ID }} 3.ACCESS KEY ${{ secrets.AZURE_STORAGE_ACCESS_KEY }}"
 
       - name: Terraform Init
         run: TF_LOG=DEBUG terraform init
