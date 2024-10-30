@@ -30,20 +30,21 @@ jobs:
     name: Validate Terraform Plan
     needs: validate
     runs-on: ubuntu-latest
+    environment: atlz-dev-plan
     #concurrency: dev-tfstate
     defaults:
       run:
         shell: bash
         working-directory: './connectivity'
-    environment: atlz-dev-plan
-    permissions:
+
+    #permissions:
       # NOTE: When modifying the token subject claims and adding `environment`.
       # If the `id-token` permission is granted at the workflow level
       # and the workflow has at least one job that does not specify an environment
       # then the action will fail with an internal error.
-      id-token: write
-      contents: read
-      pull-requests: write
+    #  id-token: write
+    #  contents: read
+    #  pull-requests: write
     env:
       ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
       ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
