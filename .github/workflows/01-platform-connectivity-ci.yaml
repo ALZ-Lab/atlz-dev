@@ -13,7 +13,7 @@ jobs:
     uses: ALZ-Lab/atlz-dev/.github/workflows/ci-template.yaml@main
     name: "CI"
     permissions:
-      id-token: write
+      #id-token: write
       contents: read
       pull-requests: write
 #    with:
