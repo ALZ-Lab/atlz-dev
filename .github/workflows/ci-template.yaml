@@ -63,7 +63,7 @@ jobs:
 
       - name: Env Check
         id: envcheck
-        run: echo "ENV validation check, 1.SECRET - ${{ secrets.AZURE_CLIENT_SECRET }} 2.SUBSCRIPTION ${{ secrets.AZURE_SUBSCRIPTION_ID }} 3.ACCESS KEY ${{ secrets.AZURE_STORAGE_ACCESS_KEY }}"
+        run: echo "ENV validation check, 1.SECRET - ${{ secrets.AZURE_CLIENT_SECRET }} 2.SUBSCRIPTION ${{ secrets.AZURE_SUBSCRIPTION_ID }} 3.ACCESS KEY ${{ secrets.AZURE_STORAGE_ACCESS_KEY }} 4.VAR ${{ vars.ARM_SUBSCRIPTION_ID }}"
 
       - name: Terraform Init
         run: TF_LOG=DEBUG terraform init
